@@ -24,7 +24,7 @@ public class Question2 {
 				}
 			}
 		}
-		//find highest times
+		//find highest times, by iterating through map
 		String maxInput = "";
 		int maxValue = 0;
 		for(String word : inputTrack.keySet()){
