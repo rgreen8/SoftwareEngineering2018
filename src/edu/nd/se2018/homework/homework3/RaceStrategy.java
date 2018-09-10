@@ -1,46 +1,42 @@
-package edu.nd.se2018.homework.hwk2;
+package edu.nd.se2018.homework.homework3;
 
 
 public interface RaceStrategy {
-    double getSpeed(int startSpeed, int distanceCovered);
+    double getSpeed(double startSpeed, double distanceCovered);
 }
 
 class slowStart implements RaceStrategy {
     @Override
-    public double getSpeed(int startSpeed, int distanceCovered) {
-    	double effort = 0.75;
-    	int speed = 0;
-    	if(distanceCovered > 600) { //if in first part of race, slower speed
-    		
-    	} else if (distanceCovered > 900) { //hitting max speed if over limit
-    		
+    public double getSpeed(double startSpeed, double distanceCovered) {
+    	double stepSize = 0;
+    	if(distanceCovered > 900) { //see if at max speed
+    		stepSize = startSpeed/0.75;
+    	} else if (distanceCovered > 600) { //check if you are speeding up
+    		stepSize = (startSpeed/0.75)*0.9;
     	} else {
-    		
+    		stepSize = startSpeed;
     	}
-        return speed;
+        return stepSize;
     }
 
 }
 class fastStart implements RaceStrategy {
     @Override
-    public double getSpeed(int startSpeed, int distanceCovered) {
-    	double effort = 0.75;
-    	int speed = 0;
-    	if(distanceCovered > 200) { //if in first part of race, faster speed
-    		
-    	} else { //return slower speed if second part
-    		
+    public double getSpeed(double startSpeed, double distanceCovered) {
+    	double stepSize = 0;
+    	if(distanceCovered > 200) { // pump the breaks after 200
+    		stepSize = startSpeed*0.75;
+    	} else { //go fast if you are still starting
+    		stepSize = startSpeed;
     	}
-        return speed;
+        return stepSize;
     }
 
 }
 class steadyState implements RaceStrategy {
     @Override
-    public double getSpeed(int startSpeed, int distanceCovered) {
-    	double effort = 0.8;
-    	
-        return startSpeed*effort;
+    public double getSpeed(double startSpeed, double distanceCovered) {
+        return startSpeed;
     }
 
 }

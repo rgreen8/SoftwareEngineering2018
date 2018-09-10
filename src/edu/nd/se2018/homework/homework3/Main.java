@@ -1,11 +1,12 @@
-package edu.nd.se2018.homework.hwk2;
-import java.util.*;
+package edu.nd.se2018.homework.homework3;
 
-public static void Main(String[] args) {
-	
-		race.enrollHorse("Sam",0,22,new fastStart());
-		race.enrollHorse("Molly",1,24,new slowStart());
-		race.enrollHorse("Joe",2,25,new fastStart());
+public class Main {
+
+	public static void main(String[] args) {
+		Race race = new Race();
+		race.enrollHorse("Sam",0,22, "fastStart");
+		race.enrollHorse("Molly",1,24,"slowStart");
+		race.enrollHorse("Joe",2,25,"fastStart");
 		race.runRace();
 	}
 }
