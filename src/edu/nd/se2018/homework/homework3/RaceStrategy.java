@@ -1,7 +1,7 @@
 package edu.nd.se2018.homework.homework3;
 
 
-public interface RaceStrategy {
+public interface RaceStrategy { //set standard for all implementations
     double getSpeed(double startSpeed, double distanceCovered);
 }
 

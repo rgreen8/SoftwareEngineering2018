@@ -13,7 +13,6 @@ public class Horse {
 			if(startSpeedIn > 0) { //check for valid input
 				startSpeed = startSpeedIn;
 			} else { startSpeed = 15;}
-			System.out.println(startSpeed);
 			distanceCovered = 0;
 			name = nameIn;
 			//set strat using switch
@@ -38,7 +37,7 @@ public class Horse {
 				strategy = new steadyState();
 				break;
 			}
-		}
+		} //function to allow use of the interface saved in RaceStrategy.java
 		public double getStep(double startSpeed, double distanceCovered) {
 			return strategy.getSpeed(startSpeed, distanceCovered);
 		}

@@ -4,19 +4,21 @@ import java.util.*;
 public class Race {
 	Race(){}
 	int horseCount = 0;
-	private HashMap<String, Horse> Horses = new HashMap<String, Horse>();
-	private ArrayList<String> standings = new ArrayList<String>();
+	private HashMap<String, Horse> Horses = new HashMap<String, Horse>(); //store all horse information
+	private ArrayList<String> standings = new ArrayList<String>(); //keep track of winners as they are added to the end
 	public void enrollHorse(String name, int horseNum, int startSpeed, String strat){
-		if(horseCount < 5) {
+		if(horseCount < 5) {//max 5
 			horseCount++;
 			Horse newHorse = new Horse(name, horseNum, startSpeed, strat);
 			Horses.put(name, newHorse);
 			
-		} else {
+		} else { 
 			System.out.println("The Starting Gate is Full! We will race with the first 5");
 		}
 	}
-	
+	//race is 1000 units, which equals 10 miles
+	//speed give the step size of each horse per iteration
+	//every 5 iterations, give update on horse status (in no particular order)
 	public void runRace() {
 		int finishCount = 0;
 		int loopCount = 0;
@@ -25,7 +27,7 @@ public class Race {
 				//check if finished
 				if(Horses.get(key).distanceCovered >= 1000) { //if finished, do nothing
 					continue;
-				} else {
+				} else { //update distance
 					double advanceStep = Horses.get(key).getStep(Horses.get(key).startSpeed, Horses.get(key).distanceCovered);
 					Horses.get(key).distanceCovered = Horses.get(key).distanceCovered + advanceStep;
 				}
@@ -50,10 +52,10 @@ public class Race {
 		}
 		//print Final Standings
 		System.out.println("");
+		System.out.println(standings.get(0) + " Wins the Race!!");
 		System.out.println("");
 		System.out.println("The Final Results Are");
 		for(int it = 0; it< standings.size(); it++) {
-			
 				System.out.println((it + 1) + ": " + standings.get(it));
 		}
 	}
