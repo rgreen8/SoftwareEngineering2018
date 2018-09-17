@@ -31,6 +31,7 @@ public class Ship extends Observable{
 	public ImageView getImageView() {
 		return shipImageView;
 	}
+	//movement functions check bounds and island status of future move before it is allowed to update location
 	public void goEast(int[][] oceanGrid) {
 		if(currentLocation.x < 24*scale && okToMove(currentLocation.x + scale, currentLocation.y, oceanGrid)) {
 			currentLocation.x = currentLocation.x + scale;
@@ -60,6 +61,7 @@ public class Ship extends Observable{
 		}
 	}
 	public boolean okToMove(int x, int y, int[][] oceanGrid) {
+		//check in location is "water", if not return not safe to move
 		if(oceanGrid[x/scale][y/scale] != 0) {
 			return false;
 		}else {

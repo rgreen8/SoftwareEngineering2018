@@ -10,10 +10,11 @@ import javafx.scene.image.ImageView;
 
 
 public class PirateShip implements Observer{
+	//need to store both positions as it is observing the ship
 	Point columbusPosition;
 	Point piratePosition;
 	int scale = 20;
-	int[][] oceanMap = new int[25][25];
+	int[][] oceanMap = new int[25][25]; //include OceanMap for placing and moving pirates
 	Image pirateImage;
 	ImageView pirateImageView;
 	public PirateShip(int[][] oceanGrid){
@@ -24,12 +25,12 @@ public class PirateShip implements Observer{
 		int startx = n*scale;
 		int starty = n2*scale;
 		piratePosition = new Point(startx, starty);
-		oceanGrid[n][n2] = 3;
+		oceanGrid[n][n2] = 3; //save in map
 		pirateImage = new Image("file:/Users/RyanGreen/git/SoftwareEngineering2018/src/images/pirateship.gif",scale,scale,true,true);
 		pirateImageView = new ImageView(pirateImage);
 	}
 	@Override
-	public void update(Observable s, Object arg) {
+	public void update(Observable s, Object arg) { //update tracking information
 		if (s instanceof Ship){
 			columbusPosition = ((Ship)s).getShipLocation();
 			movePirate();			
@@ -58,13 +59,14 @@ public class PirateShip implements Observer{
 		return piratePosition;
 	}
 	public boolean okToMove(int x, int y) {
+		//check in location is "water", if not return not safe to move
 		if(oceanMap[x/scale][y/scale] != 0) {
 			return false;
 		}else {
 			return true;
 		}
 	}
-	public void sendRes(int[][] map){
+	public void sendRes(int[][] map){ //used to pull ocean map into pirateship class
 		oceanMap = map;
 	}
 }
