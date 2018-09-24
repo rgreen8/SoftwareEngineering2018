@@ -1,4 +1,4 @@
-package edu.nd.sarec.railwaycrossing.model.vehicles;
+package Homework5.model.vehicles;
 
 import java.util.Observable;
 
@@ -23,7 +23,7 @@ public class Train extends Observable implements IVehicle{
 		this.currentX = x;
 		this.currentY = y;
 		originalX = x;
-		img = new Image("images\\Train.PNG",120,trainLength,false,false);
+		img = new Image("file:///Users/RyanGreen/git/SoftwareEngineering2018/src/images/Train.PNG",120,trainLength,false,false);
 		imgView = new ImageView(img);
 		imgView.setX(currentX);
 		imgView.setY(currentY);

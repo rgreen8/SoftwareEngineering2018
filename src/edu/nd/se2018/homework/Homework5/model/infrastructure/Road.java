@@ -1,4 +1,4 @@
-package edu.nd.sarec.railwaycrossing.model.infrastructure;
+package Homework5.model.infrastructure;;
 
 import java.awt.Point;
 import java.util.Collection;

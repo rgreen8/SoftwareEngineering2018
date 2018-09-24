@@ -1,4 +1,4 @@
-package edu.nd.sarec.railwaycrossing.model.vehicles;
+package Homework5.model.vehicles;
 
 import java.awt.Point;
 import java.util.ArrayList;
