@@ -25,7 +25,7 @@ public class Train extends Observable implements IVehicle{
 		this.currentY = y;
 		this.trainrev = rev;
 		originalX = x;
-		if(trainrev) {
+		if(trainrev) { //choose image based on direction
 			img = new Image("file:///Users/RyanGreen/git/SoftwareEngineering2018/src/images/Trainrev.PNG",120,trainLength,false,false);
 			imgView = new ImageView(img);
 		} else {
@@ -52,7 +52,7 @@ public class Train extends Observable implements IVehicle{
 		setChanged();
 		notifyObservers();
 	}
-	public void moverev(){
+	public void moverev(){ //iterate x value to the right if reversed
 		currentX+=1.25;
 		imgView.setX(currentX);
 		setChanged();
@@ -65,7 +65,7 @@ public class Train extends Observable implements IVehicle{
 		else
 			return false;				
 	}
-	public boolean offScreenrev(){
+	public boolean offScreenrev(){ //change off screen for reversed option
 		if (currentX > 1200)
 			return true;
 		else

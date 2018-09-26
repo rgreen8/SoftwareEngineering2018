@@ -42,11 +42,12 @@ public class Simulation extends Application{
 				
 		// Train
 		RailwayTracks track = mapBuilder.getTrack("Royal");
+		//create trains
 		Train train = new Train(track.getEndX()+100,track.getEndY()-25, false);
 		Train train2 = new Train(track.getEndX()-1400,track.getEndY()+25, true);
 		root.getChildren().add(train.getImageView());
 		root.getChildren().add(train2.getImageView());
-		for(CrossingGate gate: mapBuilder.getAllGates()) {
+		for(CrossingGate gate: mapBuilder.getAllGates()) { //make all gates observers of trains
 			train.addObserver(gate);
 			train2.addObserver(gate);
 		}
@@ -55,7 +56,7 @@ public class Simulation extends Application{
 
 			@Override
 			public void handle(long now) {
-			
+				//start annimations
 				createCar();
 				train.move();
 				train2.moverev();

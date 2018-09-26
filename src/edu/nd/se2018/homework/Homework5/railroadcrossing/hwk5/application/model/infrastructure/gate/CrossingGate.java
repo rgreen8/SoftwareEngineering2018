@@ -121,21 +121,21 @@ public class CrossingGate extends Observable implements Observer{
 		if (o instanceof Train){
 			Train train = (Train)o;
 			if(train.getReversed() == true) {
-				if (train.getVehicleX() > triggerPoint) {
+				if (train.getVehicleX() > triggerPoint) { //iterate if reversed train is outside of right range
 					gateCount += 1;
 				}
-				else if(train.getVehicleX() > exitPoint){
+				else if(train.getVehicleX() > exitPoint){ //close if approaching a gate
 					currentGateState.approachStation();
 				} 
 			} else {
-				if (train.getVehicleX() < exitPoint) {
+				if (train.getVehicleX() < exitPoint) { //iterate if regular train is outside of left range
 					gateCount += 1;
 				}
-				else if(train.getVehicleX() < triggerPoint){
+				else if(train.getVehicleX() < triggerPoint){ //close if approaching a gate
 					currentGateState.approachStation();
 				} 
 			}
-		if(gateCount == 2) {
+		if(gateCount == 2) { //allow gates to open if both trains are out of range 
 			currentGateState.leaveStation();
 			gateCount = 0;
 		}

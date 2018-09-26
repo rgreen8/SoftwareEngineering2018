@@ -24,7 +24,6 @@ public class Car extends Observable implements IVehicle, Observer{
 	private double speed = 0.5;
 	private boolean allowTurns = false; //to determine factory it is from
 	private boolean isTurning = false; //when car is in the process of turning right
-	static boolean stopTraffic = false; //when car is in the process of turning right
 	Random ran = new Random();
 	/**
 	 * Constructor
@@ -83,12 +82,9 @@ public class Car extends Observable implements IVehicle, Observer{
 	}
 	private boolean turnLeft() {
 		if(currentX > 395) {
-			currentX -= 1;
+			currentX -= 1; //iterate to the left
 			ivCar.setX(currentX);
-			isTurning = true;
-			if(currentX < 400) {
-				stopTraffic = true;
-			}
+			isTurning = true; //make it aware
 			return false;
 		}
 		return true;
@@ -120,7 +116,6 @@ public class Car extends Observable implements IVehicle, Observer{
 		
 	public void reset(){
 		currentY = originalY;
-		stopTraffic = false;
 	}
 	
 	public double getDistanceToLeadCar(){
