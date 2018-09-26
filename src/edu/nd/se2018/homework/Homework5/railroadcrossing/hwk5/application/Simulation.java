@@ -56,7 +56,7 @@ public class Simulation extends Application{
 
 			@Override
 			public void handle(long now) {
-				//start annimations
+				//start animations 
 				createCar();
 				train.move();
 				train2.moverev();
