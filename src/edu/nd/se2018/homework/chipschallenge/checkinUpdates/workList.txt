@@ -1,0 +1,6 @@
+- Created UML
+- Made sure to have display working and exclise able to run JavaFX sucessfully
+- Created all planned classes
+- Interconnected classes (extensions and observers)
+- Planned Level challenges 
+
